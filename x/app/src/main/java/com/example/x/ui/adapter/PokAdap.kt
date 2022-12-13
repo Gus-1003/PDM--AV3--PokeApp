@@ -1,5 +1,4 @@
-package com.example.x.adapter
-
+package com.example.x.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,9 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.terceiraprova.model.Pok
+import com.example.x.databinding.PokemonViewBinding
 
-
-class PokemonAdapter : ListAdapter<Pok, PokemonAdapter.PokemonViewHolder>(PokemonDiffUtilCallback()){
+class PokAdap  : ListAdapter<Pok, PokAdap.PokemonViewHolder>(PokemonDiffUtilCallback()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         return PokemonViewHolder.from(parent)
@@ -21,14 +20,11 @@ class PokemonAdapter : ListAdapter<Pok, PokemonAdapter.PokemonViewHolder>(Pokemo
         holder.bind(remedio)
     }
 
-    class PokemonViewHolder private constructor(var binding:PokemonViewBinding ) : RecyclerView.ViewHolder(binding.root){
+    class PokemonViewHolder private constructor(var binding: PokemonViewBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(pokemon: Pok) {
             binding.nomePersonagem.text = pokemon.name
 
-            binding.nomePersonagem.setOnClickListener {
-                Toast.makeText(binding.root.context, "CLicou no texto", Toast.LENGTH_SHORT).show()
-            }
         }
 
         companion object {
@@ -41,12 +37,12 @@ class PokemonAdapter : ListAdapter<Pok, PokemonAdapter.PokemonViewHolder>(Pokemo
         }
     }
 
-    class PokemonDiffUtilCallback : DiffUtil.ItemCallback<Pokemon>(){
-        override fun areItemsTheSame(oldItem: Pokemon, newItem: Pokemon): Boolean {
+    class PokemonDiffUtilCallback : DiffUtil.ItemCallback<Pok>(){
+        override fun areItemsTheSame(oldItem: Pok, newItem: Pok): Boolean {
             return oldItem.name.equals(newItem.name)
         }
 
-        override fun areContentsTheSame(oldItem: Pokemon, newItem: Pokemon): Boolean {
+        override fun areContentsTheSame(oldItem: Pok, newItem: Pok): Boolean {
             return oldItem.equals(newItem)
         }
 

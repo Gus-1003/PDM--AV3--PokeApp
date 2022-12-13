@@ -1,5 +1,10 @@
 package com.example.x.ui.homefragment
 
+import com.example.x.ui.adapter.PokAdap
+import com.example.x.ui.homefragment.MainViewModel
+
+
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,7 +35,7 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
 
 
-        val adapter = Pok()
+        val adapter = PokAdap()
         viewModel.getData()
 
         viewModel.listPokemons.observe(viewLifecycleOwner) {
